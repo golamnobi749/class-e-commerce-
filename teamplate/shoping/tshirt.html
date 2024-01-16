@@ -1,0 +1,79 @@
+{% extends 'shoping/base.html' %}
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>{% block title %}
+    
+    {% endblock title %}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tshirts.css' %}">
+  </head>
+  <body>
+
+{% block content %}
+<!---------------------------start of T-Shirt ------------------------------>
+
+<div class="m-4 p-5">
+    <h2 class='text-center text-primary mb-5'> aiQuest ! T-Shirt product</h2>
+    <div class="owl-carousel" id='slider1'>
+        {% for tshirts in tshirt %}
+        <a class='btn shadow-lg text-left' href="{% url 'tshirtview' tshirts.id %}">
+            <div class="item">
+                <img width='155px'height='120px' src="{{tshirts.image.url}}" alt="">
+                <h6 class='text-primary'>{{tshirts.productname}}</h6>
+                <small style='border:1px solid blue; padding:3px ;border-radius:2px;' class='text-primary'>Free Delivery</small>
+                <p> Tk:<del>{{tshirts.current_price}}</del></p>
+                <p> Tk :{{tshirts.price}}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+<!---------------------------end  of T-shirt product ------------------------------>
+<!---------------------------start of Lehenga ------------------------------>
+<div class="m-4 p-5">
+    <h2 class='text-center text-primary mb-5'> aiQuest ! Lehenga product</h2>
+    <div class="owl-carousel" id='slider1'>
+        {% for lehengas in lehenga %}
+        <a class='btn shadow-lg text-left' href="{% url 'tshirtview' lehengas.id %}" class='btn'>
+            <div class="item">
+                <img width='120px' height='120px' src="{{lehengas.image.url}}" alt=""> <br>
+                <small style='font-size:13px;'>{{lehengas.productname}}</small> <br>
+                <small style='border:1px solid blue; padding:3px ;border-radius:2px;' class='text-primary'>Free Delivery</small>
+                <p> Tk:<del>{{lehengas.price}}</del></p>
+                <p> Tk :{{lehengas.current_price}}</p>
+
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
